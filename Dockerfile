@@ -18,4 +18,4 @@ RUN npm install -g tunnelmole
 EXPOSE 3000
 
 # Start both the app and ngrok to expose it
-CMD ["sh", "-c", "node index.js & tmole 3000 as roadmap.tunnelmole.net"]
+CMD ["sh", "-c", "node index.js & tmole 3000"]
