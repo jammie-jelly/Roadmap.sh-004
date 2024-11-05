@@ -82,8 +82,6 @@
 
     - name: Fetch logs for the application
       command: docker logs ci-app-1
-#      args:
-#        chdir: /home/ubuntu
       register: log_output
 
     - name: Display logs
