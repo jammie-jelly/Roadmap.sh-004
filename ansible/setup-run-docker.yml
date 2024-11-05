@@ -53,25 +53,37 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: Create local CI directory
+      file:
+        path: /home/ubuntu/ci 
+        state: directory
+
+    - name: Clone the repository
+      git:
+        repo: 'https://github.com/jammie-jelly/Roadmap.sh-004.git'  
+        dest: /home/ubuntu/ci  
+        version: main  # Specify the branch or tag
+        force: yes
         
     - name: Build docker image
       command: docker compose build 
       args:
-        chdir: /home/ubuntu
+        chdir: /home/ubuntu/ci
 
     - name: Run docker application in background
       command: docker compose up -d
       args:
-        chdir: /home/ubuntu
+        chdir: /home/ubuntu/ci
         
     - name: Wait for services to become active
       pause:
         seconds: 5
 
     - name: Fetch logs for the application
-      command: docker logs ubuntu-app-1
-      args:
-        chdir: /home/ubuntu
+      command: docker logs ci-app-1
+#      args:
+#        chdir: /home/ubuntu
       register: log_output
 
     - name: Display logs
