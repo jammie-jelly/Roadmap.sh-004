@@ -17,5 +17,5 @@ RUN npm install -g tunnelmole
 # Expose port 3000
 EXPOSE 3000
 
-# Start both the app and ngrok to expose it
+# Start both the app and tunnelmole to expose it
 CMD ["sh", "-c", "node index.js & tmole 3000"]
