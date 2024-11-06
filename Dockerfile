@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # tmole
-RUN npm install -g tunnelmole
+RUN npm install -g tunnelmole@2.2.14
 
 # Expose port 3000
 EXPOSE 3000
